@@ -1,0 +1,8 @@
+#background{
+    position: static;
+    z-index: 1;
+}
+#startbutton{
+    margin: -250px 325px;
+    z-index:  0;
+}

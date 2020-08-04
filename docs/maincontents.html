@@ -56,15 +56,17 @@
     }*/
 
     function kassyaRolling(){
+        console.log("function kassyaRolling()は動いています");
         var pics_src = new Array("image/kassya1.png","image/kassya2.png");
         var num = -1;
-        timer();
-        function timer(){
+            function timer(){
+                console.log("function timer()は動いています");
             if (num == 1){num = 0;} 
             else {num ++;}
             document.getElementById("kassya").src = pics_src[num];
-            setTimeout("timer()",10); 
+            setTimeout(timer,10); 
         }
+        timer();
     }
     
     var element = document.getElementById( "kassya" ) ;
@@ -73,6 +75,7 @@
         delX = event.deltaX
     	resultElement.innerHTML = "" ;
     	resultElement.appendChild( new Text( "deltaX: " + delX+ "\n" ) ) ;
+        console.log("deltaXを読み取るfunctionです");
         kassyaRolling();
         /*if (delX > 0){
             kassyaRolling();

@@ -11,8 +11,8 @@
     <p id="sample2outputX">Ｘ座標：</p>
     <p id="sample2outputY">Ｙ座標：</p>
 
-<script　type="text/javascript">//ここ大体コピペ
-    (function (){//基本のマウスストーカー
+<script>
+    (function (){//基本のマウスストーカー(コピペ)
         var mga="image/front.png"; 
         var hx=-70;
         var hy=0;
@@ -24,15 +24,15 @@
         document.getElementById( "movechecker" ).onmousemove = function( event ){
             sample2getCoordinates( event.clientX, event.clientY );
         };
-        document.getElementById( "movechecker" ).onmouseout = function(){
+        document.getElementById( "movechecker" ).onmouseout = function(){//これいらないけどmoveとoutが対になってたりしてたら怖いから消さん
             sample2clearCoordinates();
         };
     }
-    function sample2getCoordinates( $arg1, $arg2 ) {
+    function sample2getCoordinates( $arg1, $arg2 ) {//デバッグ用 最後に消す
         document.getElementById( "sample2outputX" ).innerHTML = "Ｘ座標：" + $arg1;
         document.getElementById( "sample2outputY" ).innerHTML = "Ｙ座標：" + $arg2;
     }
-    function sample2clearCoordinates() {
+    function sample2clearCoordinates() {//同上
         document.getElementById( "sample2outputX" ).innerHTML = "Ｘ座標：";
         document.getElementById( "sample2outputY" ).innerHTML = "Ｙ座標：";
     }

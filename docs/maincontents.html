@@ -10,18 +10,18 @@
     <div id　= fl>
         <div id = "wakuwaku"><img src = "image/waku.png"></div>
         <div id = "kassya">
-            <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'">
+            <!-- <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'"> -->
+            <img src = "image/kassya1.png">
         </div>
     </div>
-    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
+    <br><br><br>
     <p id="Xzahyou">Ｘ座標：</p>
     <p id="Yzahyou">Ｙ座標：</p>
     <p id="move"> movementX:</p>
+    <p id="scroll"> deltaX:</p>
 
 
 <script>
-
-
     (function ()
     {//ハムの動作
         const hamuimg = [];
@@ -42,9 +42,8 @@
             ob.left=e.pageX +-80 + "px";
             ob.top=e.pageY + 20 + "px";
             let pX = e.pageX;
-            let pY = e.pageY 
+            let pY = e.pageY;
             var shiftX = e.movementX; 
-            //shiftX = -5
             debugZahyouGetter( pX, pY );//最後に消す
             document.getElementById( "move" ).innerHTML = "movementX：" + shiftX;//消す
             /*if(shiftX < 0){//左に動いた
@@ -58,10 +57,41 @@
             }
             hamuChengerLeft();*/
         }
-
-
         document.write("<img src="+hamuselecter+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
     }());
+
+    kassyaRolling();
+
+    var element = document.getElementById( "kassya" ) ;
+    var callbackFn =  function ( event ) {
+	    event.preventDefault() ;
+        delX = event.deltaX
+    	resultElement.innerHTML = "" ;
+	    // resultElement.appendChild( new Text( "currentTarget: " + event.currentTarget + "(#" + event.currentTarget.id + ")" + "\n" ) ) ;
+    	resultElement.appendChild( new Text( "deltaX: " + delX+ "\n" ) ) ;
+        /*if (delX > 0){
+            kassyaRolling();
+        }*/
+
+    } ;
+    element.addEventListener( "wheel", callbackFn ) 
+    var resultElement = document.getElementById( "scroll" ) ;
+
+    function KassyaRolling(){
+        var pics_src = new Array("image/kassya1.png","image/kassya2.png");
+        var num = -1;
+        slideshow_timer();
+        function slideshow_timer(){
+            if (num == 1){
+                num = 0;
+            } 
+            else {
+                num ++;
+            }
+            document.getElementById("mypic").src=pics_src[num];
+            setTimeout("slideshow_timer()",10); 
+        }
+    }
     
     function debugZahyouGetter( $arg1, $arg2 ) {//最後に消す
         document.getElementById( "Xzahyou" ).innerHTML = "Ｘ座標：" + $arg1;

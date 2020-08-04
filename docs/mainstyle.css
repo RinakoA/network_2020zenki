@@ -1,26 +1,19 @@
  /*{ 
       cursor:none; 
 }*/
-body{
-    width:10000;
-    height:10000;
-}
+
 
  #Mo{ 
-    position: fixed;
     z-index: 100;
 }
 #wakuwaku{
-    position: fixed;
     top: 0; 
     left: 0; 
     z-index: 0;
 
 }
 #kassya{
-    background: url(image/kassya1over.png) no-repeat;
-    position: fixed;
-    margin-top: 20px;
+    margin-top: -550px;
     margin-left: 450px;
     z-index: 1;
 }

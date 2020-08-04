@@ -8,10 +8,10 @@
 
 <body>
     <div id = "wakuwaku"><img src = "image/waku.png"></div>
-    <div id = "kassya">
-        <!-- <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'"> -->
-        <img src = "image/kassya1.png">
-    </div>
+    <!-- <div id = "kassya">
+        <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'">
+    </div> -->
+    <img id = "kassya" src = "image/kassya1.png">
     <br><br><br>
     <!-- <p id="Xzahyou">Ｘ座標：</p> -->
     <!-- <p id="Yzahyou">Ｙ座標：</p> -->
@@ -55,6 +55,18 @@
         document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
     }*/
 
+    function KassyaRolling(){
+        var pics_src = new Array("image/kassya1.png","image/kassya2.png");
+        var num = -1;
+        timer();
+        function timer(){
+            if (num == 1){num = 0;} 
+            else {num ++;}
+            document.getElementById("kassya").src = pics_src[num];
+            setTimeout("timer()",10); 
+        }
+    }
+    
     var element = document.getElementById( "kassya" ) ;
     var callbackFn =  function ( event ) {
 	    event.preventDefault() ;
@@ -69,17 +81,8 @@
     element.addEventListener( "wheel", callbackFn ) 
     var resultElement = document.getElementById( "scroll" ) ;
 
-    function KassyaRolling(){
-        var pics_src = new Array("image/kassya1.png","image/kassya2.png");
-        var num = -1;
-        timer();
-        function timer(){
-            if (num == 1){num = 0;} 
-            else {num ++;}
-            document.getElementById("kassya").src=pics_src[num];
-            setTimeout("timer()",10); 
-        }
-    }
+
+
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>

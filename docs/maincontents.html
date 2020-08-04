@@ -9,13 +9,10 @@
 <body>
     <p id="Xzahyou">Ｘ座標：</p>
     <p id="Yzahyou">Ｙ座標：</p>
+    <p id="move"> movementX</p>
 
 
 <script>
-
-    window.onload = function() {//moveCheckerを実行するだけ
-    moveChecker();
-    }
 
     (function ()
     {//ハムの動作
@@ -25,15 +22,29 @@
         hamuimg[2] = "image/left2.png";
         hamuimg[3] = "image/right1.png";
         hamuimg[4] = "image/right2.png";
-        let hamuselecter = hamuimg[0];
+        var hamunumber = 0;
+        var hamuselecter = hamuimg[hamunumber];
 
         document.onmousemove=function (e){ 
             var ob=document.getElementById("Mo").style;
             ob.left=e.pageX+"px";
             ob.top=e.pageY+"px";
-            debugZahyouGetter( e.pageX, e.pageY );
+            let pX = e.pageX;
+            let pY = e.pageY 
+            var shiftX = e.movementX; 
+            //shiftX = -5
+            debugZahyouGetter( pX, pY );//最後に消す
+            document.getElementById( "move" ).innerHTML = shiftX;//消す
+            if(shiftX < 0){//左に動いた
+                hamunumber = 1;
+            }
+            else if(shiftX > 0){//右に動いた
+                hamunumber = 3;
+            }
+            else{//動いてない
+                hamunumber = 0;              
+            }
         }
-
 
         document.write("<img src="+hamuselecter+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
     }());
@@ -41,7 +52,7 @@
     function debugZahyouGetter( $arg1, $arg2 ) {//最後に消す
         document.getElementById( "Xzahyou" ).innerHTML = "Ｘ座標：" + $arg1;
         document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
-     }
+    }
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>

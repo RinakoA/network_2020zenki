@@ -7,35 +7,41 @@
 </head>
 
 <body>
-    <div id="movechecker"></div>
-    <p id="sample2outputX">Ｘ座標：</p>
-    <p id="sample2outputY">Ｙ座標：</p>
+    <p id="Xzahyou">Ｘ座標：</p>
+    <p id="Yzahyou">Ｙ座標：</p>
+
 
 <script>
-    (function (){//基本のマウスストーカー(コピペ)
-        var mga="image/front.png"; 
-        var hx=-70;
-        var hy=0;
-        document.onmousemove=function (e){ var ob=document.getElementById("Mo").style; ob.left=e.pageX+hx+"px"; ob.top=e.pageY+hy+"px";}//意味わからん
-        document.write("<img src="+mga+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
-    }());
 
-    window.onload = function () {//X座標とY座標を取得する
-        document.getElementById( "movechecker" ).onmousemove = function( event ){
-            sample2getCoordinates( event.clientX, event.clientY );
-        };
-        document.getElementById( "movechecker" ).onmouseout = function(){//これいらないけどmoveとoutが対になってたりしてたら怖いから消さん
-            sample2clearCoordinates();
-        };
+    window.onload = function() {//moveCheckerを実行するだけ
+    moveChecker();
     }
-    function sample2getCoordinates( $arg1, $arg2 ) {//デバッグ用 最後に消す
-        document.getElementById( "sample2outputX" ).innerHTML = "Ｘ座標：" + $arg1;
-        document.getElementById( "sample2outputY" ).innerHTML = "Ｙ座標：" + $arg2;
-    }
-    function sample2clearCoordinates() {//同上
-        document.getElementById( "sample2outputX" ).innerHTML = "Ｘ座標：";
-        document.getElementById( "sample2outputY" ).innerHTML = "Ｙ座標：";
-    }
+
+    (function ()
+    {//ハムの動作
+        const hamuimg = [];
+        hamuimg[0] = "image/front.png"; 
+        hamuimg[1] = "image/left1.png";
+        hamuimg[2] = "image/left2.png";
+        hamuimg[3] = "image/right1.png";
+        hamuimg[4] = "image/right2.png";
+        let hamuselecter = hamuimg[0];
+
+        document.onmousemove=function (e){ 
+            var ob=document.getElementById("Mo").style;
+            ob.left=e.pageX+"px";
+            ob.top=e.pageY+"px";
+            debugZahyouGetter( e.pageX, e.pageY );
+        }
+
+
+        document.write("<img src="+hamuselecter+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
+    }());
+    
+    function debugZahyouGetter( $arg1, $arg2 ) {//最後に消す
+        document.getElementById( "Xzahyou" ).innerHTML = "Ｘ座標：" + $arg1;
+        document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
+     }
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>

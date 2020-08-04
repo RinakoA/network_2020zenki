@@ -7,23 +7,20 @@
 </head>
 
 <body>
-    <div id　= fl>
-        <div id = "wakuwaku"><img src = "image/waku.png"></div>
-        <div id = "kassya">
-            <!-- <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'"> -->
-            <img src = "image/kassya1.png">
-        </div>
+    <div id = "wakuwaku"><img src = "image/waku.png"></div>
+    <div id = "kassya">
+        <!-- <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'"> -->
+        <img src = "image/kassya1.png">
     </div>
     <br><br><br>
-    <p id="Xzahyou">Ｘ座標：</p>
-    <p id="Yzahyou">Ｙ座標：</p>
+    <!-- <p id="Xzahyou">Ｘ座標：</p> -->
+    <!-- <p id="Yzahyou">Ｙ座標：</p> -->
     <p id="move"> movementX:</p>
     <p id="scroll"> deltaX:</p>
 
 
 <script>
-    (function ()
-    {//ハムの動作
+    (function (){//ハムの動作
         const hamuimg = [];
         hamuimg[0] = "image/front.png"; 
         hamuimg[1] = "image/left1.png";
@@ -44,35 +41,30 @@
             let pX = e.pageX;
             let pY = e.pageY;
             var shiftX = e.movementX; 
-            debugZahyouGetter( pX, pY );//最後に消す
+            //debugZahyouGetter( pX, pY );//最後に消す
             document.getElementById( "move" ).innerHTML = "movementX：" + shiftX;//消す
-            /*if(shiftX < 0){//左に動いた
-                hamuChengerLeft();
-            }
-            else if(shiftX > 0){//右に動いた
-                hamuChengerRight();
-            }
-            else{//動いてない
-                hamuChengerStatic();             
-            }
+            /*if(shiftX < 0){hamuChengerLeft();}
+            else if(shiftX > 0){hamuChengerRight();}
+            else{hamuChengerStatic();}
             hamuChengerLeft();*/
         }
         document.write("<img src="+hamuselecter+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
     }());
-
-    kassyaRolling();
+    /*function debugZahyouGetter( $arg1, $arg2 ) {//最後に消す
+        document.getElementById( "Xzahyou" ).innerHTML = "Ｘ座標：" + $arg1;
+        document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
+    }*/
 
     var element = document.getElementById( "kassya" ) ;
     var callbackFn =  function ( event ) {
 	    event.preventDefault() ;
         delX = event.deltaX
     	resultElement.innerHTML = "" ;
-	    // resultElement.appendChild( new Text( "currentTarget: " + event.currentTarget + "(#" + event.currentTarget.id + ")" + "\n" ) ) ;
     	resultElement.appendChild( new Text( "deltaX: " + delX+ "\n" ) ) ;
+        kassyaRolling();
         /*if (delX > 0){
             kassyaRolling();
         }*/
-
     } ;
     element.addEventListener( "wheel", callbackFn ) 
     var resultElement = document.getElementById( "scroll" ) ;
@@ -80,22 +72,13 @@
     function KassyaRolling(){
         var pics_src = new Array("image/kassya1.png","image/kassya2.png");
         var num = -1;
-        slideshow_timer();
-        function slideshow_timer(){
-            if (num == 1){
-                num = 0;
-            } 
-            else {
-                num ++;
-            }
-            document.getElementById("mypic").src=pics_src[num];
-            setTimeout("slideshow_timer()",10); 
+        timer();
+        function timer(){
+            if (num == 1){num = 0;} 
+            else {num ++;}
+            document.getElementById("kassya").src=pics_src[num];
+            setTimeout("timer()",10); 
         }
-    }
-    
-    function debugZahyouGetter( $arg1, $arg2 ) {//最後に消す
-        document.getElementById( "Xzahyou" ).innerHTML = "Ｘ座標：" + $arg1;
-        document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
     }
 </script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -2,17 +2,42 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet"  href="style.css">
+<link rel="stylesheet"  href="mainstyle.css">
 <title>流星の如く駆けよハム</title>
-<script src="js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
-<main>
-<p>Hello World!</p>
-</main>
-<script>
+    <div id="movechecker"></div>
+    <p id="sample2outputX">Ｘ座標：</p>
+    <p id="sample2outputY">Ｙ座標：</p>
+
+<script　type="text/javascript">//ここ大体コピペ
+    (function (){//基本のマウスストーカー
+        var mga="image/front.png"; 
+        var hx=-70;
+        var hy=0;
+        document.onmousemove=function (e){ var ob=document.getElementById("Mo").style; ob.left=e.pageX+hx+"px"; ob.top=e.pageY+hy+"px";}//意味わからん
+        document.write("<img src="+mga+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
+    }());
+
+    window.onload = function () {//X座標とY座標を取得する
+        document.getElementById( "movechecker" ).onmousemove = function( event ){
+            sample2getCoordinates( event.clientX, event.clientY );
+        };
+        document.getElementById( "movechecker" ).onmouseout = function(){
+            sample2clearCoordinates();
+        };
+    }
+    function sample2getCoordinates( $arg1, $arg2 ) {
+        document.getElementById( "sample2outputX" ).innerHTML = "Ｘ座標：" + $arg1;
+        document.getElementById( "sample2outputY" ).innerHTML = "Ｙ座標：" + $arg2;
+    }
+    function sample2clearCoordinates() {
+        document.getElementById( "sample2outputX" ).innerHTML = "Ｘ座標：";
+        document.getElementById( "sample2outputY" ).innerHTML = "Ｙ座標：";
+    }
 </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </body>
 
 </html>    

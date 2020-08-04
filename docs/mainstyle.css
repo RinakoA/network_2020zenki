@@ -1,3 +1,11 @@
-/**{
+*{
      cursor:none;
-}*/
+}
+#waku{
+    position: static;
+    z-index: 1;
+}
+#kassya{
+    /*margin: px 325px;*/
+    z-index: 0;
+}

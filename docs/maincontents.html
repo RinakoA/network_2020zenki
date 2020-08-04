@@ -7,9 +7,11 @@
 </head>
 
 <body>
+    <div id = "waku"><img src = "image/waku.png/"></div>
+    <div id = "kassya"><img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'"></div>
     <p id="Xzahyou">Ｘ座標：</p>
     <p id="Yzahyou">Ｙ座標：</p>
-    <p id="move"> movementX</p>
+    <p id="move"> movementX:</p>
 
 
 <script>
@@ -25,6 +27,10 @@
         var hamunumber = 0;
         var hamuselecter = hamuimg[hamunumber];
 
+        function hamuChengerLeft(){hamunumber = 1;}
+        function hamuChengerRight(){hamunumber = 3;}
+        function hamuChengerStatic(){hamunumber = 0;}
+
         document.onmousemove=function (e){ 
             var ob=document.getElementById("Mo").style;
             ob.left=e.pageX+"px";
@@ -34,17 +40,19 @@
             var shiftX = e.movementX; 
             //shiftX = -5
             debugZahyouGetter( pX, pY );//最後に消す
-            document.getElementById( "move" ).innerHTML = shiftX;//消す
-            if(shiftX < 0){//左に動いた
-                hamunumber = 1;
+            document.getElementById( "move" ).innerHTML = "movementX：" + shiftX;//消す
+            /*if(shiftX < 0){//左に動いた
+                hamuChengerLeft();
             }
             else if(shiftX > 0){//右に動いた
-                hamunumber = 3;
+                hamuChengerRight();
             }
             else{//動いてない
-                hamunumber = 0;              
+                hamuChengerStatic();             
             }
+            hamuChengerLeft();*/
         }
+
 
         document.write("<img src="+hamuselecter+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
     }());

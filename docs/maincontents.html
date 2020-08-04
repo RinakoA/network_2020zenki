@@ -7,16 +7,20 @@
 </head>
 
 <body>
-    <div id = "wakuwaku"><img src = "image/waku.png"></div>
-    <div id = "kassya">
-        <img src = "image/kassya1.png" onmouseover="this.src='image/kassya2.png'" onmouseout="this.src='image/kassya1.png'">
+    <div id　= fl>
+        <div id = "wakuwaku"><img src = "image/waku.png"></div>
+        <div id = "kassya">
+            <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'">
+        </div>
     </div>
+    <p>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　</p>
     <p id="Xzahyou">Ｘ座標：</p>
     <p id="Yzahyou">Ｙ座標：</p>
     <p id="move"> movementX:</p>
 
 
 <script>
+
 
     (function ()
     {//ハムの動作
@@ -35,8 +39,8 @@
 
         document.onmousemove=function (e){ 
             var ob=document.getElementById("Mo").style;
-            ob.left=e.pageX+"px";
-            ob.top=e.pageY+"px";
+            ob.left=e.pageX +-80 + "px";
+            ob.top=e.pageY + 20 + "px";
             let pX = e.pageX;
             let pY = e.pageY 
             var shiftX = e.movementX; 

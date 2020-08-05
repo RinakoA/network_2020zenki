@@ -44,10 +44,10 @@
             var shiftX = e.movementX; 
             //debugZahyouGetter( pX, pY );//最後に消す
             document.getElementById( "move" ).innerHTML = "movementX：" + shiftX;//消す
-            /*if(shiftX < 0){hamuChengerLeft();}
+            if(shiftX < 0){hamuChengerLeft();}
             else if(shiftX > 0){hamuChengerRight();}
             else{hamuChengerStatic();}
-            hamuChengerLeft();*/
+            hamuChengerLeft();
         }
         document.write("<img src="+hamuselecter+" id='Mo' style='position:absolute;'>");//ここHTMLとcss書いてる
     }());
@@ -56,19 +56,7 @@
         document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
     }*/
 
-    function kassyaRolling(){
-        console.log("function kassyaRolling()は動いています");
-        var pics_src = new Array("image/kassya1.png","image/kassya2.png");
-        var num = -1;
-            function timer(){
-                console.log("function timer()は動いています");
-            if (num == 1){num = 0;} 
-            else {num ++;}
-            document.getElementById("kassya").src = pics_src[num];
-            setTimeout(timer,10); 
-        }
-        timer();
-    }
+
     
     var element = document.getElementById( "kassya" ) ;
     var callbackFn =  function ( event ) {
@@ -76,11 +64,24 @@
         delX = event.deltaX
     	resultElement.innerHTML = "" ;
     	resultElement.appendChild( new Text( "deltaX: " + delX+ "\n" ) ) ;
-        console.log("deltaXを読み取るfunctionです");
-        kassyaRolling();
-        /*if (delX > 0){
-            kassyaRolling();
-        }*/
+        //console.log("deltaXを読み取るfunctionです");
+        function kassyaRolling(){
+            console.log("function kassyaRolling()は動いています");
+            var pics_src = new Array("image/kassya1.png","image/kassya2.png");
+            var num = -1;
+            function timer(){
+                //console.log("function timer()は動いています");
+                if (num == 1){num = 0;} 
+               else {num ++;}
+                document.getElementById("kassya").src = pics_src[num];
+                setTimeout(timer,10); 
+            }
+            timer();
+        }
+        if(delX > 0){ kassyaRolling(); }//思ってる動きと違うよお
+        else{
+            document.getElementById("kassya").src = "image/kassya1.png"
+        }
     } ;
     element.addEventListener( "wheel", callbackFn ) 
     var resultElement = document.getElementById( "scroll" ) ;

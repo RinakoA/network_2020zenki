@@ -71,16 +71,16 @@
         //console.log("deltaXを読み取るfunctionです");
         function kassyaRolling(){
             //console.log("function kassyaRolling()は動いています");
-            var pics_src = new Array("image/kassya1.png","image/kassya2.png");
-            var num = -1;
-            function timer(){
-                //console.log("function timer()は動いています");
-                if (num == 1){num = 0;} 
-               else {num ++;}
-                document.getElementById("ka").src = pics_src[num];
-                setTimeout(timer,10); 
-            }
-            timer();
+            let imgIndex = 0;
+            const imgPaths = ["image/kassya1.png","image/kassya2.png"];
+            function changeImage() {
+            const img = document.getElementById('ka');
+            imgIndex = (imgIndex + 1) % 2;
+            img.src = imgPaths[imgIndex];
+}
+
+setInterval(changeImage, 100);
+
         }
         if(delX > 0){ kassyaRolling(); }
         else{

@@ -8,10 +8,9 @@
 
 <body>
     <div id = "wakuwaku"><img src = "image/waku.png"></div>
-    <!-- <div id = "kassya">
-        <img src = "image/kassya1.png" onmouseover="this.src='image/kassya1over.png'" onmouseout="this.src='image/kassya1.png'">
-    </div> -->
-    <img id = "kassya" src = "image/kassya1.png">
+    <div id = "kassya">
+        <img id = ka src = "image/kassya1.png" onmouseover = "trigger()"; onmouseout = "triggerout();">
+    </div> 
     <br><br><br>
     <!-- <p id="Xzahyou">Ｘ座標：</p> -->
     <!-- <p id="Yzahyou">Ｙ座標：</p> -->
@@ -55,10 +54,15 @@
         document.getElementById( "Xzahyou" ).innerHTML = "Ｘ座標：" + $arg1;
         document.getElementById( "Yzahyou" ).innerHTML = "Ｙ座標：" + $arg2;  
     }*/
+    function trigger(){
+            console.log("trigger動いてます");
+        }
 
-
-    
-    var element = document.getElementById( "kassya" ) ;
+    function triggerout(){
+        console.log("triggerout動いてます")
+    }
+   
+    var element = document.getElementById( "ka" ) ;
     var callbackFn =  function ( event ) {
 	    event.preventDefault() ;
         delX = event.deltaX
@@ -66,21 +70,21 @@
     	resultElement.appendChild( new Text( "deltaX: " + delX+ "\n" ) ) ;
         //console.log("deltaXを読み取るfunctionです");
         function kassyaRolling(){
-            console.log("function kassyaRolling()は動いています");
+            //console.log("function kassyaRolling()は動いています");
             var pics_src = new Array("image/kassya1.png","image/kassya2.png");
             var num = -1;
             function timer(){
                 //console.log("function timer()は動いています");
                 if (num == 1){num = 0;} 
                else {num ++;}
-                document.getElementById("kassya").src = pics_src[num];
+                document.getElementById("ka").src = pics_src[num];
                 setTimeout(timer,10); 
             }
             timer();
         }
-        if(delX > 0){ kassyaRolling(); }//思ってる動きと違うよお
+        if(delX > 0){ kassyaRolling(); }
         else{
-            document.getElementById("kassya").src = "image/kassya1.png"
+            document.getElementById("ka").src = "image/kassya1.png"
         }
     } ;
     element.addEventListener( "wheel", callbackFn ) 
